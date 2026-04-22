@@ -1429,7 +1429,12 @@
 
         // DASHBOARD
         async function loadDashboard() {
-            showLoading();
+
+
+            if (document.getElementById('dashScreen').style.display !== 'block') {
+                showLoading();
+            }
+
             try {
                 const { data: profile } = await sb.from('users').select('*').eq('id', currentUser.id).single();
                 userProfile = profile || { credit_balance: 0 };
